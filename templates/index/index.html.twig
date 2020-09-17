@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Stash
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="style.css"></link>
+{% endblock %}
+
+
+{% block body %}
+
+<h3>Add a bookmark</h3>
+
+<form action="/create" method="POST">
+    <input type="text" id="name" name="name" placeholder="name"><br><br>
+    <input type="text" id="url" name="url" placeholder="url"><br><br>
+    <input type="submit" value="Add"><br><br>
+</form>
+<hr>
+
+<h3>My bookmarks</h3>
+
+{% for b in bookmarks %}
+    {{ b.name }} [<a href="{{ b.url }}" > {{ b.url }} </a>] [ <a class="delete-btn" href="/delete/{{b.id}}"> DELETE </a> ]
+    <br>
+    <br>
+{% endfor %}
+
+
+{% endblock %}
